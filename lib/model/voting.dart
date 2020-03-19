@@ -19,7 +19,7 @@ class Voting {
 }
 
 Future<List<Voting>> getVotings() async {
-  final response = await http.get("http://192.168.2.204:8080/v1/voting");
+  final response = await http.get("https://voting-app-mr-anderson.herokuapp.com/v1/voting");
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -34,7 +34,8 @@ Future<List<Voting>> getVotings() async {
 }
 
 Future<http.Response> deleteVoting(int votingId) async {
-  return await http.delete("http://192.168.2.204:8080/v1/voting/$votingId");
+  Map<String, String> headerzz = {"Accept": "application/json", "Content-type": "application/json"};
+  return await http.delete("https://voting-app-mr-anderson.herokuapp.com/v1/voting/$votingId", headers: headerzz);
 }
 
 Future<Voting> createVoting(String creator, String description) async {
@@ -43,7 +44,7 @@ Future<Voting> createVoting(String creator, String description) async {
 //  String headerz = '{"Accept": "application/json", "Content-Type": "application/json"}';
   Map<String, String> headerzz = {"Accept": "application/json", "Content-type": "application/json"};
 
-  final response = await http.post("http://192.168.2.204:8080/v1/voting", headers: headerzz, body: jsonz);
+  final response = await http.post("https://voting-app-mr-anderson.herokuapp.com/v1/voting", headers: headerzz, body: jsonz);
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

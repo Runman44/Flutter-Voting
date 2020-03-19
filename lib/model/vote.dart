@@ -19,7 +19,7 @@ class Vote {
 }
 
 Future<List<Vote>> getAllVotes(int votingId) async {
-  final response = await http.get("http://192.168.2.204:8080/v1/vote/$votingId");
+  final response = await http.get("https://voting-app-mr-anderson.herokuapp.com/v1/vote/$votingId");
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -39,7 +39,7 @@ Future<Vote> sendVote(int votingId, String voter, String votes) async {
 //  String headerz = '{"Accept": "application/json", "Content-Type": "application/json"}';
   Map<String, String> headerzz = {"Accept": "application/json", "Content-type": "application/json"};
 
-  final response = await http.post("http://192.168.2.204:8080/v1/vote/$votingId", headers: headerzz , body: jsonz);
+  final response = await http.post("https://voting-app-mr-anderson.herokuapp.com/v1/vote/$votingId", headers: headerzz , body: jsonz);
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
